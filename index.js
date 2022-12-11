@@ -12,10 +12,10 @@ app.use(cors())
 app.use(express.json())
 
 // For Production 
-if (process.env.NODE_ENV === "production") {
-  const static_path = path.join(__dirname,'client','build');
-  app.use(express.static(static_path));
-}
+
+const static_path = path.join(__dirname, 'client', 'build');
+app.use(express.static(static_path));
+
 
 // Available Routes
 app.use('/', require('./routes/user'))

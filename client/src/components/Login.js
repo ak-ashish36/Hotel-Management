@@ -4,9 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 function Login(props) {
     document.title = "Hotel Management-Login";
 
-    // const host = "http://localhost:5000";
-    const host ="https://hotel-management-ak.herokuapp.com";
-
     //Setting the value of email and password which is to be send to fetch api 
     const [credentials, setCredentials] = useState({ email: '', password: '' })
     const onChange = (e) => {
@@ -19,7 +16,7 @@ function Login(props) {
     //Action to be done after clicking Login button
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let url = `${host}/userlogin`;
+        let url = `${props.host}/userlogin`;
         const response = await fetch(url, {
             method: 'POST',
             headers: {

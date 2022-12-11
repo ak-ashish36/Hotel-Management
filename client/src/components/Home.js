@@ -3,8 +3,6 @@ import { useNavigate} from 'react-router-dom';
 import Spinner from './Spinner';
 
 function Home(props) {
-    // const host = "http://localhost:5000";
-    const host ="https://hotel-management-ak.herokuapp.com";
 
     const [loading, setLoading] = useState(true);           // for rendering spinner while datas are fetching
     const [search, setSearch] = useState("");               // Search field
@@ -23,7 +21,7 @@ function Home(props) {
     // Get all Hotels
     const getBooks = async () => {
         // API Call 
-        const response = await fetch(`${host}/fetchhotels`, {
+        const response = await fetch(`${props.host}/fetchhotels`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -50,7 +48,7 @@ function Home(props) {
     // Get Search Result
     const handleClick = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${host}/fetchhotels/${search}`, {
+        const response = await fetch(`${props.host}/fetchhotels/${search}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,7 +62,7 @@ function Home(props) {
 
     const bookHotel = async (id) => {
         // API Call
-        const response = await fetch(`${host}/bookhotel/${id}/${date.from}/${date.to}`, {
+        const response = await fetch(`${props.host}/bookhotel/${id}/${date.from}/${date.to}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -91,7 +89,7 @@ function Home(props) {
     }
     const cancelBooking = async (id) => {
         // API Call
-        const response = await fetch(`${host}/cancelbooking/${id}/`, {
+        const response = await fetch(`${props.host}/cancelbooking/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

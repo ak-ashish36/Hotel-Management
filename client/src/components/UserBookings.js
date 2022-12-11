@@ -4,8 +4,6 @@ import Spinner from './Spinner';
 import moment from 'moment';
 
 function UserBookings(props) {
-    // const host = "http://localhost:5000";
-    const host ="https://hotel-management-ak.herokuapp.com";
     
     const [loading, setLoading] = useState(true);
     const [bookings, setBookings] = useState([])
@@ -13,7 +11,7 @@ function UserBookings(props) {
     // Get all Bookings data
     const getBooks = async () => {
         // API Call 
-        const response = await fetch(`${host}/bookinghistory`, {
+        const response = await fetch(`${props.host}/bookinghistory`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
